@@ -1,0 +1,74 @@
+@import '../../../assets/styles/services';
+
+.root {
+  margin-top: 40px;
+  padding: 40px;
+  background: $c-white;
+  border-radius: 8px;
+  box-shadow: $box-shadow-white-box;
+}
+
+.container {
+  text-align: center;
+}
+
+.buttonsContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.fieldContainer {
+  padding: 0 20%;
+}
+
+.button {
+  margin: 0 20px;
+}
+
+.calc {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.clean {
+  width: 22px;
+  margin-right: 10px;
+  color: $c-blue;
+}
+
+.result {
+  margin-top: 40px;
+  padding: 40px 0;
+  border-top: 1px solid $c-gray-light;
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  background: rgba($c-blue, 0.3);
+  font-size: $font-size-md;
+  padding: 8px 14px;
+  box-shadow: $box-shadow-blue-light;
+  min-width: 80px;
+  border-radius: 25px;
+  margin: 0 5px;
+}
+
+.intervalItem {
+  background: rgba($c-blue, 0.3);
+  padding: 5px;
+  border-radius: 25px;
+  min-width: 35px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}

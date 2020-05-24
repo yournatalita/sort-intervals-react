@@ -1,0 +1,109 @@
+@import '../../../assets/styles/services';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid $c-gray-light;
+  border-radius: 3px;
+  padding: 15px;
+  transition: border-color 0.2s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  font-size: $font-size-lg;
+
+  &:disabled {
+    background-color: $c-gray-blue;
+  }
+
+  &::placeholder {
+    color: $c-gray;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled),
+  &:active:not(:disabled) {
+    border-color: $c-gray;
+  }
+
+  &:focus:not(:disabled) {
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+
+  &:global(.error) {
+    color: $c-pink;
+    border-color: $c-pink;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $c-pink;
+    }
+  }
+
+  &:global(.is-masked) {
+    &:focus {
+      &::placeholder {
+        color: currentColor;
+      }
+    }
+  }
+
+  &:global(.clearButton) {
+    padding-right: 40px;
+  }
+}
+
+.error {
+  font-size: 14px;
+  color: $c-pink;
+  margin: 5px 0 0;
+}
+
+.label {
+  display: block;
+  font-size: $font-size-md;
+  margin-bottom: 10px;
+}
+
+.inputWrapper {
+  width: 100%;
+  text-align: left;
+  position: relative;
+
+  &:global(.validated) {
+    input {
+      padding-right: 39px;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      width: 8px;
+      height: 15px;
+      transform: rotate(45deg);
+      border-bottom: 3px solid $c-gray-light;
+      border-right: 3px solid $c-gray-light;
+    }
+  }
+}

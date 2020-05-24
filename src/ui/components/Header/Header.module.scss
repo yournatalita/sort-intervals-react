@@ -1,0 +1,19 @@
+@import '../../../assets/styles/services';
+
+.root {
+  padding: 40px;
+  background: $c-white;
+  border-radius: 8px;
+  box-shadow: $box-shadow-white-box;
+}
+
+.container {
+  text-align: center;
+}
+
+.pre {
+  font-size: $font-size-h6;
+  line-height: $line-height-h6;
+  margin-top: 20px;
+  color: $c-gray-blue;
+}

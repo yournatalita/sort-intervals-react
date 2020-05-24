@@ -1,0 +1,248 @@
+import { Meta, Preview, Story, Props } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+
+import UseState from '../../services/UseState/UseState';
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import Input from "./Input";
+
+<Meta title="Input" component={Input} />
+
+# Input
+
+Ширина блока - 100%.
+Модификатор можно прописать как для всего блока (prop: mix) так и для лэйбла (prop: labelMix) и для обертки инпута (prop: inputMix);
+Стили прописаны в Input.scss.
+
+<Preview>
+  <Story name="Simple input">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input name="input1" label="Простое поле" placeholder="Заглушка" />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### С маской телефоном
+
+> Используйтся библиотека `react-text-mask`, маска прописывается в формате массива, где для каждого символа либо фиксированный символ, либо регулярное выражение.
+
+<Preview>
+  <Story name="Masked input Phone">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          label="Поле с маской"
+          mask={['+','7','(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+          placeholder="+7 (___) ___-__-__"
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### С маской разделителями тысяч
+
+> Чтобы сделать такую маску используется библиотека `text-mask-addons` (https://github.com/text-mask/text-mask/tree/master/addons/#readme)
+
+
+<Preview>
+  <Story name="Masked input Number">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          label="Поле с номером и разделителем тысяч"
+          mask={createNumberMask({
+            thousandsSeparatorSymbol: ' ',
+            prefix: '',
+            suffix: ''
+          })}
+          placeholder=""
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### Обязательное поле
+
+> Чтобы сделать поле обязятельным, нужно добавить аттрибут 'isRequired'
+
+<Preview>
+  <Story name="Required input">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input name="input1" label="Обязательное поле (без заглушки)" isRequired />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### Неактивное поле
+
+> Чтобы сделать поле неактивным, нужно добавить аттрибут 'disabled'
+
+<Preview>
+  <Story name="Disabled input">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input name="input1" label="Неактивное поле" disabled />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### Неактивное поле
+
+> Чтобы добавить ошибку - нужно добавить аттрибут 'errorText' и прописать строковый параметр.
+
+> Если при наличии ошибки поле пустое, то границы инпута не будут покрашены красным.
+> Это не зависит от параметра 'isRequired', только от наличии в инпуте значения
+
+
+<Preview>
+  <Story name="Ошибка: Некорректный ввод">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          errorText={'Только буквы'}
+          value="123"
+          label="Ошибка: Некорректный ввод"
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Required input with error">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input name="input1" label="Обязательное поле" isRequired  value="" errorText={'Только буквы'}/>
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Поле с переполнением контента">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          label="Поля с переполнением контента"
+          value="Директор по стратегическому развитию в организации и по совместительству дворник. Никак не может найти себя в этом мире и постоянно сомневается, обращался к докторам, книгам, эзотерики, даже ходил в церковь. "
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Поле только для чтения">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          label="Поле только для чтения"
+          readOnly
+          value="Директор по стратегическому развитию в организации и по совместительству дворник. Никак не может найти себя в этом мире и постоянно сомневается, обращался к докторам, книгам, эзотерикам, даже ходил в церковь. "
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+### Поле, прошедшее валидацию
+
+> Чтобы пометить поле как "прошедшее валидацию", нужно добавить аттрибут isValidated
+
+> Аттрибут не привносит никакой логики, просто помечает пол иконкой, вся логика валидации должна находиться снаружи компонета
+
+<Preview>
+  <Story name="Поле с успешной валидацией">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          isValidated
+          value="Этот текст прошел валидацию"
+          label="Поле с успешной валидацией"
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Поле с успешной валидацией и переполнением контента">
+    <div className="canvas">
+      <div style={{ marginBottom: '30px' }}>
+        <Input
+          name="input1"
+          isValidated
+          label="Поле с успешной валидацией и переполнением контента"
+          value="Этот текст прошел валидацию, но очень длинный, его написал директор по стратегическому развитию в организации и по совместительству дворник. Никак не может найти себя в этом мире и постоянно сомневается, обращался к докторам, книгам, эзотерикам, даже ходил в церковь."
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+
+### Поле с кнопкой сброса
+
+Кнопка появляется на onChange, и при ненулевом value у поля, если в аттрибутах прокинут параметр 'clearButton'
+
+> У поля внешний state. Поэтому, чтобы использовать это поле, нужен прокидывать хуки сверху.
+
+> Компонент UseState - это хелпер, чтобы исользовать стейт в разметке MDX. На проекте эту обертку нужно убрать.
+
+<Preview>
+  <Story name="Поле с кнопкой сброса">
+    <UseState
+        initialValue={''}
+        render={(clearInputValue, setClearInputValue) => (
+          <Input
+            label="Поле с кнопкой сброса"
+            value={clearInputValue}
+            onChange={(event) => {
+              setClearInputValue(event.target.value);
+            }}
+            onClear={() => {
+              setClearInputValue('');
+            }}
+            clearButton
+          />
+        )}
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Поле с кнопкой сброса с переполнением">
+    <UseState
+        initialValue={'Этот текст прошел валидацию, но очень длинный, его написал директор по стратегическому развитию в организации и по совместительству дворник. Никак не может найти себя в этом мире и постоянно сомневается, обращался к докторам, книгам, эзотерикам, даже ходил в церковь.'}
+        render={(clearInputValue, setClearInputValue) => (
+          <Input
+            label="Поле с кнопкой сброса с переполнением"
+            value={clearInputValue}
+            onChange={(event) => {
+              setClearInputValue(event.target.value);
+            }}
+            onClear={() => {
+              setClearInputValue('');
+            }}
+            clearButton
+          />
+        )}
+    />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Input} />

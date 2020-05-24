@@ -1,0 +1,53 @@
+@import 'src/assets/styles/services';
+
+.root {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 60px;
+  border-radius: 6px;
+  font-size: $font-size-xl;
+  line-height: 1;
+  text-align: center;
+  border: none;
+  padding: 0 25px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  color: $c-black;
+  min-width: 200px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.theme {
+  &-blue {
+    background: $g-blue;
+    color: $c-white;
+    letter-spacing: 0.02em;
+    box-shadow: $box-shadow-blue;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &-white {
+    background: $c-white;
+    color: $c-black;
+    border: 1px solid $c-gray-light;
+    box-shadow: $box-shadow-blue-light;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
