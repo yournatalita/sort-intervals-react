@@ -5,6 +5,10 @@
   background: $c-white;
   border-radius: 8px;
   box-shadow: $box-shadow-white-box;
+
+  @include media-breakpoint-down(xs) {
+    padding: 20px 10px;
+  }
 }
 
 .container {

@@ -18,3 +18,8 @@ body {
   display: block;
   margin: 0;
 }
+
+.js-focus-visible:focus:not(.focus-visible),
+button:focus:not(.focus-visible) {
+  outline: none;
+}

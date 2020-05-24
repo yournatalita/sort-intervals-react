@@ -197,7 +197,7 @@ const SortMerge = (): JSX.Element => {
             type={'text'}
             name={'field'}
             value={inputValue}
-            placeholder={'1-1,12-44'}
+            placeholder={'-2--1,1-1,12-44'}
             label={'Enter comma separated list of intervals'}
             onChange={(e): void => {
               setInputValue(e.target.value);

@@ -6,6 +6,10 @@
   background: $c-white;
   border-radius: 8px;
   box-shadow: $box-shadow-white-box;
+
+  @include media-breakpoint-down(xs) {
+    padding: 20px 10px;
+  }
 }
 
 .container {
@@ -16,14 +20,38 @@
   margin-top: 30px;
   display: flex;
   justify-content: center;
+
+  @include media-breakpoint-down(xs) {
+    flex-flow: wrap;
+  }
 }
 
 .fieldContainer {
   padding: 0 20%;
+
+  @include media-breakpoint-down(xs) {
+    padding: 0;
+  }
 }
 
 .button {
   margin: 0 20px;
+
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+    max-width: 260px;
+    margin: 0;
+  }
+
+  &:first-child {
+    @include media-breakpoint-down(xs) {
+      margin-bottom: 20px;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
 }
 
 .calc {
@@ -46,10 +74,11 @@
 
 .list {
   list-style: none;
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 0;
   display: flex;
   justify-content: center;
+  flex-flow: wrap;
 }
 
 .item {
@@ -59,7 +88,7 @@
   box-shadow: $box-shadow-blue-light;
   min-width: 80px;
   border-radius: 25px;
-  margin: 0 5px;
+  margin: 10px 5px;
 }
 
 .intervalItem {

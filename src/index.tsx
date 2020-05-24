@@ -4,6 +4,9 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// focus-visible polyfill
+import 'focus-visible';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
