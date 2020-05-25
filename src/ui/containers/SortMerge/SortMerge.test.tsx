@@ -62,7 +62,7 @@ describe('test App', () => {
   });
 
   it('clears field and result after error', () => {
-    let wrapper = mount(<SortMerge value={'1'} />);
+    const wrapper = mount(<SortMerge value={'1'} />);
     wrapper.find('.t-sort').simulate('click');
 
     expect(wrapper.find('.t-error').length).toBe(1);
@@ -75,7 +75,7 @@ describe('test App', () => {
   });
 
   it('clears field and result after success', () => {
-    let wrapper = mount(<SortMerge value={'1-1'} />);
+    const wrapper = mount(<SortMerge value={'1-1'} />);
     wrapper.find('.t-sort').simulate('click');
 
     expect(wrapper.find('.t-error').hostNodes().length).toBe(0);
@@ -89,7 +89,7 @@ describe('test App', () => {
   });
 
   it('renders result', () => {
-    let wrapper = mount(<SortMerge value={'1-3,5-7,2-4,8-12,5-11'} />);
+    const wrapper = mount(<SortMerge value={'1-3,5-7,2-4,8-12,5-11'} />);
     const answer = ['1-4', '5-12'];
     wrapper.find('.t-sort').simulate('click');
 
