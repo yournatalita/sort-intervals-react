@@ -12,7 +12,7 @@ const Input = ({ label, value, onChange, errorText, ...rest }: InputProps): JSX.
         <span className={styles.label}>{label}</span>
         <input className={styles.input} value={value} onChange={onChange} {...rest} />
       </div>
-      {errorText && <span className={styles.error}>{errorText}</span>}
+      {errorText && <span className={classNames(styles.error, 't-error')}>{errorText}</span>}
     </label>
   );
 };

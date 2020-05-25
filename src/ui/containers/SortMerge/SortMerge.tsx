@@ -7,7 +7,7 @@ import Input from '../../elements/Input/Input';
 
 import styles from './SortMerge.module.scss';
 
-import { TIntervals, SortMergeState } from './SortMerge.d';
+import { TIntervals, SortMergeState, SortMergeProps } from './SortMerge.d';
 
 import { ReactComponent as IconCalc } from '../../../assets/icons/calc.svg';
 import { ReactComponent as IconClean } from '../../../assets/icons/clean.svg';
@@ -184,8 +184,8 @@ const sortAndMergeIntervals = (value: string, stateActions: SortMergeState): voi
   }
 };
 
-const SortMerge = (): JSX.Element => {
-  const [inputValue, setInputValue] = useState('');
+const SortMerge = ({ value }: SortMergeProps): JSX.Element => {
+  const [inputValue, setInputValue] = useState(value);
   const [error, setError] = useState('');
   const [intervals, setIntervals] = useState<TIntervals | null>(null);
 
@@ -196,6 +196,7 @@ const SortMerge = (): JSX.Element => {
           <Input
             type={'text'}
             name={'field'}
+            id={'field'}
             value={inputValue}
             placeholder={'-2--1,1-1,12-44'}
             label={'Enter comma separated list of intervals'}
@@ -209,6 +210,7 @@ const SortMerge = (): JSX.Element => {
           <div className={styles.button}>
             <Button
               themes={['blue']}
+              mix={'t-sort'}
               onClick={(): void => {
                 sortAndMergeIntervals(inputValue, { setError, setIntervals });
               }}
@@ -222,6 +224,7 @@ const SortMerge = (): JSX.Element => {
           <div className={styles.button}>
             <Button
               themes={['white']}
+              mix={'t-clear'}
               onClick={(): void => {
                 setInputValue('');
                 setError('');
@@ -237,14 +240,17 @@ const SortMerge = (): JSX.Element => {
         </div>
       </div>
       {intervals && !error && (
-        <div className={styles.result}>
+        <div className={classNames(styles.result, 't-result')}>
           <h5>Result</h5>
           <ul className={styles.list}>
             {intervals.map((interval, index) => {
               const values = parseStringValues(interval);
               if (values) {
                 return (
-                  <li className={styles.item} key={`${interval}${index}`}>
+                  <li
+                    className={classNames(styles.item, 't-result-item')}
+                    key={`${interval}${index}`}
+                  >
                     <span className={styles.intervalItem}>{values[0]}</span>-
                     <span className={styles.intervalItem}>{values[1]}</span>
                   </li>

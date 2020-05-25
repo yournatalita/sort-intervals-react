@@ -2,8 +2,12 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('test App', () => {
+  test('renders header', () => {
+    const { getByText } = render(<App />);
+    const header = getByText(/Merge and Sort Intervals/i);
+    const pre = getByText(/Merge overlapping intervals and sort them./i);
+    expect(header).toBeInTheDocument();
+    expect(pre).toBeInTheDocument();
+  });
 });

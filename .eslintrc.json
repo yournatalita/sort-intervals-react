@@ -4,12 +4,13 @@
     "es6": true,
     "es2017": true
   },
-  "plugins": ["@typescript-eslint/eslint-plugin", "prettier"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "prettier", "jest"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "prettier/@typescript-eslint"
   ],
   "parser": "@typescript-eslint/parser",

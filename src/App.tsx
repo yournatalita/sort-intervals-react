@@ -4,12 +4,12 @@ import SortMerge from './ui/containers/SortMerge/SortMerge';
 
 import './App.scss';
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <div className="App">
       <div className={'container'}>
         <Header />
-        <SortMerge />
+        <SortMerge value={''} />
       </div>
     </div>
   );
